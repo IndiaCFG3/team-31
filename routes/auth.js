@@ -9,7 +9,7 @@ router.get('/signup', authController.signup);
 // router.get('/signout', authController.signout);
 
 router.use('/worker', require('./worker'));
-// router.use('/admin', require('./admin'));
-// router.use('/viewer', require('./viewer'));
+router.use('/admin', require('./admin'));
+router.use('/viewer', require('./viewer'));
 
 module.exports = router;

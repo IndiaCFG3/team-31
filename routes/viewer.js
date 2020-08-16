@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const viewerController = require('../controllers/viewer_controller');
+const viewerController = require('../controllers/viewer');
 
 // router.get('/', viewerController.idle);
 
