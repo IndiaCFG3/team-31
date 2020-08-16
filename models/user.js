@@ -20,7 +20,7 @@ var userDBSchema = new mongoose.Schema({
         unique: true,
         trim: true
     },
-    encry_password: {
+    password: {
         type: String,
         required: true
     },
@@ -31,7 +31,7 @@ var userDBSchema = new mongoose.Schema({
         maxlength: 10,
         minlength:10,
     },
-    salt: String,
+    // salt: String,
     role: {
         type: Number,
         default: 0
@@ -39,31 +39,31 @@ var userDBSchema = new mongoose.Schema({
 });
 
 
-userDBSchema.virtual("password")
-    .set(function(password){
-        this._password = password;
-        this.salt = uuidv1();
-        this.encry_password = this.securePassword(password);
-    })
-    .get(function(){
-        return this._password;
-    });
+// userDBSchema.virtual("password")
+//     .set(function(password){
+//         this._password = password;
+//         this.salt = uuidv1();
+//         this.encry_password = this.securePassword(password);
+//     })
+//     .get(function(){
+//         return this._password;
+//     });
 
-userDBSchema.methods = {
+// userDBSchema.methods = {
 
-    authenticate: function(plainPassword){
-        return this.securePassword(plainPassword) === this.encry_password; 
-    },
-    securePassword: function(plainPassword){
-        if(!plainPassword) return "";
-        try{
-           return crypto.createHmac('sha256', this.salt)
-           .update(plainPassword)
-           .digest('hex'); 
-        } catch(err){
-            return "";
-        }
-    }
-}
+//     authenticate: function(plainPassword){
+//         return this.securePassword(plainPassword) === this.encry_password; 
+//     },
+//     securePassword: function(plainPassword){
+//         if(!plainPassword) return "";
+//         try{
+//            return crypto.createHmac('sha256', this.salt)
+//            .update(plainPassword)
+//            .digest('hex'); 
+//         } catch(err){
+//             return "";
+//         }
+//     }
+// }
 
 module.exports = mongoose.model("User", userDBSchema);

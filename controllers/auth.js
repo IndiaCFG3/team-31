@@ -6,14 +6,15 @@ module.exports.idle = function (req, res) {
 }
 module.exports.signup = function (req, res) {
     var body ={
-        name:"gaurang",
-        lastName:"Gupta",
-        email:"gaurang.gupta",
-        password:"hello",
-        contact:7001457825,
-        role:0
+        name:"Rashmi",
+        lastName:"Dhant",
+        email:"rashmi.dhant@gmail.com",
+        password:"llo",
+        contact:5434247825,
+        role:2
     }
-    User.create(req.body, function (err, user) {
+    console.log("Updated");
+    User.create(body, function (err, user) {
 
         if (err) {
             console.log('error in signing up', err);
@@ -34,8 +35,7 @@ module.exports.createSession = function (req, res) {
 
     // console.log(req.body);
     console.log("user entered with email " + req.body.email);
-    // return res.redirect('/signup');
-    User.findOne({
+     User.findOne({
         email: req.body.email
     }, function (err, user) {
 
@@ -63,8 +63,8 @@ module.exports.createSession = function (req, res) {
         } else {
             console.log("Error")
             // handle user not found
-            return res.redirect('/signin');
-        }
+return res.redirect('/signup');
+}
     });
 
 
