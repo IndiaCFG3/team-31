@@ -15,7 +15,7 @@ app.use(cookieParser());
 // telling app to use routes
 app.use('/', require('./routes/auth'));
 
-app.set('view engine', 'ejs');   
+// app.set('view engine', 'ejs');   
 app.set('views', './views');
 
 app.listen(port , function(err){
