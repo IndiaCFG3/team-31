@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const {QuestionSet, Form} = require('../models/form');
 const mapping = require('../models/user_mapping');
 
 module.exports.idle = function (req, res) {
@@ -12,17 +13,32 @@ module.exports.signup = function (req, res) {
         password:"llo",
         contact:5434247825,
         role:2
+    } 
+    var mbody ={
+        id:"1818",
+        desc:"What is our requirements",
+        q_type:0,
     }
     console.log("Updated");
-    User.create(body, function (err, user) {
+    QuestionSet.create(mbody,function (err, ques) {
 
         if (err) {
             console.log('error in signing up', err);
             return
         }
-
+        
         return res.redirect('/signin')
-    })
+    });
+
+    // User.create(body, function (err, user) {
+
+    //     if (err) {
+    //         console.log('error in signing up', err);
+    //         return
+    //     }
+
+    //     return res.redirect('/signin')
+    // })
 }
 
 module.exports.signin = function (req, res) {
@@ -49,17 +65,13 @@ module.exports.createSession = function (req, res) {
 
             // handle password which doesn't match
             //Idhar dalega jo function bola 
-            // if (user.password != req.body.password) {
-            //     return res.redirect('back');
-            // }
-
-            // handle session creation
-
-
+            if (user.password != req.body.password) {
+                return res.redirect('back');
+            }
             res.cookie('obj_id', user._id);
             res.cookie('role', user.role);
             // return res.redirect('/'+role+'/home');
-            return res.redirect('/signin');
+            return res.redirect('/'+role+'/home');
         } else {
             console.log("Error")
             // handle user not found

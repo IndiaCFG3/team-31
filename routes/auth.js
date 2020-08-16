@@ -8,7 +8,7 @@ router.post('/create-session', authController.createSession);
 router.get('/signup', authController.signup);
 // router.get('/signout', authController.signout);
 
-// router.use('/users', require('./users'));
+router.use('/worker', require('./worker'));
 // router.use('/admin', require('./admin'));
 // router.use('/viewer', require('./viewer'));
 

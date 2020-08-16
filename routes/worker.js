@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const workerController = require('../controllers/worker_controller');
+const workerController = require('../controllers/worker');
 
-router.get('/', workerController.idle);
+// router.get('/', workerController.idle);
 
 router.get('/home', workerController.home);
 

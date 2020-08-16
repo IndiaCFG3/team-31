@@ -17,11 +17,8 @@ const questionSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    options: {
-        type: Array,
     }
-});
-
+);
 const QuestionSet = mongoose.model("questionSchema", questionSchema);
 
 const formDBSchema = new mongoose.Schema({
@@ -37,11 +34,16 @@ const formDBSchema = new mongoose.Schema({
         trim: true,
     },
     question_set: {
-        type: [questionSchema],
+        type: [{
+            type:String
+        }],
     },
-    timestamp: true
-});
+},    {timestamp: true}
+
+);
 
 const Form = mongoose.model("Form", formDBSchema);
 
 module.exports = {QuestionSet, Form};
+
+
