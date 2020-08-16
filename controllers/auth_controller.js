@@ -1,4 +1,5 @@
-const User = require('../models/users');
+const User = require('../models/user');
+const mapping = require('../models/user_mapping');
 
 module.exports.idle = function (req, res) {
     return res.redirect('/users/signin');
@@ -16,7 +17,8 @@ module.exports.createSession = function (req, res) {
         if (err) { console.log('error in finding user in signing in'); return }
         // handle user found
         if (user) {
-            let role = user.role;
+            let role = mapping[user.role];
+
             // handle password which doesn't match
            //Idhar dalega jo function bola 
             // if (user.password != req.body.password) {
@@ -28,7 +30,7 @@ module.exports.createSession = function (req, res) {
 
             res.cookie('obj_id', user._id);
             res.cookie('role',user.role);
-            return res.redirect('/role/home');
+            return res.redirect('/'+role+'/home');
 
         } else {
             // handle user not found
