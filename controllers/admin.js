@@ -10,8 +10,8 @@ module.exports.home = async function(req,res){
         if (err) { console.log('error in finding the user'); return }
 
         if (user)
-            return res.render(' admin/forms');
+            return res.render('admin/forms');
         
     });
 
-    return res.render(' admin/forms')}
+    return res.render('admin/forms')}
