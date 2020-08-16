@@ -1,6 +1,7 @@
 node_modules/
 r/
 Team*.zip
+Team 31/
 *.pem
 *.ppk
 *.crt
