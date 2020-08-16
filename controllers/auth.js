@@ -49,8 +49,8 @@ module.exports.signin = function (req, res) {
 }
 module.exports.createSession = function (req, res) {
 
-    // console.log(req.body);
-    console.log("user entered with email " + req.body.email);
+    console.log(req.body);
+    console.log("user entered with email " + req.body.password);
      User.findOne({
         email: req.body.email
     }, function (err, user) {
@@ -73,9 +73,11 @@ module.exports.createSession = function (req, res) {
             // return res.redirect('/'+role+'/home');
             return res.redirect('/'+role+'/home');
         } else {
-            console.log("Error")
+            console.log("Error");
+            return res.redirect('/signin');
+
             // handle user not found
-return res.redirect('/signup');
+// return res.redirect('/signup');
 }
     });
 
