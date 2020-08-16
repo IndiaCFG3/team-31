@@ -54,7 +54,6 @@ module.exports.createSession = function (req, res) {
      User.findOne({
         email: req.body.email
     }, function (err, user) {
-
         if (err) {
             console.log('error in finding user in signing in');
             return
@@ -62,14 +61,16 @@ module.exports.createSession = function (req, res) {
         // handle user found
         if (user) {
             let role = mapping[user.role];
-
             // handle password which doesn't match
             //Idhar dalega jo function bola 
             if (user.password != req.body.password) {
                 return res.redirect('back');
             }
+
             res.cookie('obj_id', user._id);
             res.cookie('role', user.role);
+            console.log(role);
+
             // return res.redirect('/'+role+'/home');
             return res.redirect('/'+role+'/home');
         } else {

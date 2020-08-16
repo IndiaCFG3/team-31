@@ -8,7 +8,7 @@ module.exports.home = async  function(req,res){
     User.findOne({ _id: obj_id }, async function (err, user) {
         if (err) { console.log('error in finding the user'); return }
 
-        if (user && user.role ===1) {
+        if (user) {
 
             return res.render('worker/forms');
 
@@ -16,5 +16,5 @@ module.exports.home = async  function(req,res){
         }
     });
 
-    return res.redirect('/signin')
+    return res.render('worker/forms')
 }
