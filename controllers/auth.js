@@ -2,7 +2,7 @@ const User = require('../models/user');
 const mapping = require('../models/user_mapping');
 
 module.exports.idle = function (req, res) {
-    return res.redirect('/users/signin');
+    return res.redirect('/signin');
 }
 
 module.exports.signin = function (req, res) {
@@ -30,8 +30,8 @@ module.exports.createSession = function (req, res) {
 
             res.cookie('obj_id', user._id);
             res.cookie('role',user.role);
-            return res.redirect('/'+role+'/home');
-
+            // return res.redirect('/'+role+'/home');
+            return res.redirect('/');
         } else {
             // handle user not found
             return res.redirect('back');

@@ -38,7 +38,8 @@ const formDBSchema = new mongoose.Schema({
     },
     question_set: {
         type: [questionSchema],
-    }
+    },
+    timestamp: true
 });
 
 const Form = mongoose.model("Form", formDBSchema);
