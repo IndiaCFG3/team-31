@@ -7,7 +7,7 @@ const port = 8000;
 const Chart = require("chart.js"); 
 // const CronJob = require('./config/cronJob');
 
-app.use(express.static('./assets'));
+app.use(express.static('views'));
 
 app.use(express.urlencoded());
 app.use(cookieParser());
