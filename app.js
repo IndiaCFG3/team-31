@@ -5,7 +5,7 @@ const db = require('./config/mongoose');
 const port = 8000;
 
 const Chart = require("chart.js"); 
-const CronJob = require('./config/cronJob');
+// const CronJob = require('./config/cronJob');
 
 app.use(express.static('./assets'));
 
@@ -13,9 +13,9 @@ app.use(express.urlencoded());
 app.use(cookieParser());
 
 // telling app to use routes
-app.use('/', require('./routes/index'));
+app.use('/', require('./routes/auth'));
 
-// app.set('view engine', 'ejs');   
+app.set('view engine', 'ejs');   
 app.set('views', './views');
 
 app.listen(port , function(err){

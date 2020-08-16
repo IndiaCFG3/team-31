@@ -1,5 +1,5 @@
 var mapping = new Map();
-map[0] = "worker";
-map[1] = "viewer";
-map[2] = "admin";
+mapping[0] = "worker";
+mapping[1] = "viewer";
+mapping[2] = "admin";
 module.exports = mapping;

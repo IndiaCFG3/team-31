@@ -2,7 +2,7 @@ const User = require('../models/user');
 const mapping = require('../models/user_mapping');
 
 module.exports.idle = function (req, res) {
-    return res.redirect('/users/signin');
+    return res.redirect('/signin');
 }
 
 module.exports.signin = function (req, res) {
@@ -12,8 +12,11 @@ module.exports.signin = function (req, res) {
 }
 module.exports.createSession = function (req, res) {
 
-    console.log(req.body);
+    // console.log(req.body);
+    console.log("user entered with email "+req.body.email);
+    return res.redirect('/signin'); 
     User.findOne({ email: req.body.email }, function (err, user) {
+   
         if (err) { console.log('error in finding user in signing in'); return }
         // handle user found
         if (user) {
@@ -30,11 +33,14 @@ module.exports.createSession = function (req, res) {
 
             res.cookie('obj_id', user._id);
             res.cookie('role',user.role);
-            return res.redirect('/'+role+'/home');
-
+            // return res.redirect('/'+role+'/home');
+            return res.redirect('/signin');
         } else {
+            console.log("Error")
             // handle user not found
-            return res.redirect('back');
+            return res.redirect('/signin');
         }
     });
+    
+   
 }
