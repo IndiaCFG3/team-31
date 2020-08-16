@@ -1,6 +1,6 @@
 # Code for Good Team 31 - Team Quaranteam
 
-## Non-Profit - CRAPE
+## Non-Profit - CARPE
 ## Problem Statement
 The overall issue is "Improper Solid Waste Management". Firstly, approximately, only 70% of waste generated is actually collected for management and the disposal of the waste is also improper. For improving this, we are running awareness campaigns and we need an application to assist us in keeping track of our progress.
 
