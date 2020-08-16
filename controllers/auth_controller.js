@@ -32,7 +32,6 @@ module.exports.createSession = function (req, res) {
 
         } else {
             // handle user not found
-
             return res.redirect('back');
         }
     });
