@@ -5,6 +5,7 @@ router.get('/', authController.idle);
 
 router.get('/signin', authController.signin);
 router.post('/create-session', authController.createSession);
+router.get('/signup', authController.signup);
 // router.get('/signout', authController.signout);
 
 // router.use('/users', require('./users'));
